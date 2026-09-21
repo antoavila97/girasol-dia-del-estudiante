@@ -1,0 +1,407 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="description" content="Feliz Día del Estudiante y de la Amistad. Una flor amarilla que se arma para mis compañeras. De parte de Antonio Avila.">
+<title>Día de la Amistad y del Estudiante 🌻</title>
+<link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>🌻</text></svg>">
+<style>
+  :root{
+    --verde:#2d9a4e;
+    --verde-osc:#1f3d2b;
+    --verde-med:#2b5a3f;
+    --amarillo:#ffd166;
+    --amarillo-suave:#fff3b0;
+    --naranja:#e67e22;
+    --marron:#5f3f24;
+    --radius:18px;
+    --fuente-titulo:"Playfair Display", Georgia, "Times New Roman", serif;
+  }
+  *{margin:0;padding:0;box-sizing:border-box}
+  html{color-scheme:light}
+  body{
+    font-family:system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+    color:var(--verde-osc);
+    background:
+      radial-gradient(120% 90% at 50% -10%, rgba(255,255,255,.55) 0%, rgba(255,255,255,0) 45%),
+      linear-gradient(180deg, #a9e0f2 0%, #fdeec4 58%, #ffd88a 100%);
+    min-height:100vh;
+    min-height:100dvh;
+    overflow-x:hidden;
+  }
+  [aria-hidden="true"], .petals{pointer-events:none}
+
+  /* ---------- text fade-in de arranque ---------- */
+  body:not(.ready) .scene{opacity:0}
+  body.ready .scene{animation:sceneIn .6s ease-out both}
+  @keyframes sceneIn{from{opacity:0;transform:translateY(6px)}to{opacity:1;transform:none}}
+
+  .scene{
+    position:relative;
+    max-width:1000px;
+    margin:0 auto;
+    min-height:100vh;
+    min-height:100dvh;
+    display:flex;
+    flex-direction:column;
+    align-items:center;
+    justify-content:flex-start;
+    padding:min(4vh,2.5rem) 1.25rem 2rem;
+    text-align:center;
+    z-index:2;
+  }
+  .eyebrow{
+    font-size:.8rem;font-weight:700;letter-spacing:.18em;text-transform:uppercase;
+    color:var(--verde-med);
+    background:rgba(255,255,255,.55);
+    border:1px solid rgba(45,154,78,.25);
+    padding:.45rem .9rem;border-radius:999px;backdrop-filter:blur(4px);
+  }
+  .title{
+    font-family:var(--fuente-titulo);
+    font-size:clamp(1.9rem, 6vw, 3.4rem);
+    line-height:1.08;
+    margin:1.1rem auto .5rem;
+    max-width:18ch;
+    text-wrap:balance;
+  }
+  .title em{font-style:italic;color:var(--verde)}
+  .subtitle{
+    color:var(--verde-med);
+    font-size:clamp(.95rem, 2.6vw, 1.15rem);
+    margin-bottom:.4rem;
+  }
+  .hint{font-size:.82rem;color:#5b7a66;font-style:italic;min-height:1.2em;transition:opacity .3s}
+
+  /* ---------- girasol ---------- */
+  .flower{
+    position:relative;
+    width:82vmin;
+    height:96vmin;
+    max-width:520px;
+    max-height:620px;
+    margin:0 auto;
+  }
+  .flower__glow{
+    position:absolute;left:50%;top:41vmin;width:64vmin;height:64vmin;
+    margin-left:-32vmin;margin-top:-32vmin;border-radius:50%;
+    background:radial-gradient(circle, rgba(255,214,102,.6) 0%, rgba(255,214,102,0) 62%);
+    animation:glow 3.5s ease-in-out infinite alternate;
+  }
+  @keyframes glow{from{transform:scale(.94)}to{transform:scale(1.08)}}
+
+  .flower__head{position:absolute;left:0;top:0;width:82vmin;height:82vmin}
+  .flower__petal{
+    position:absolute;left:50%;top:50%;
+    width:30%;height:50%;
+    margin-left:-15%;margin-top:-50%;
+    transform-origin:50% 100%;
+    border-radius:50% 50% 50% 50%/58% 58% 42% 42%;
+    background:radial-gradient(120% 90% at 50% 78%, #fff6c9 0%, #ffd166 46%, #f5a623 82%);
+    box-shadow:inset 0 -14% 18% rgba(194,128,14,.24), 0 1.5vmin 5vmin rgba(31,61,43,.10);
+  }
+  body.play .flower__petal{
+    animation:bloom .62s cubic-bezier(.2,.9,.3,1.45) calc(1200ms + var(--d,0ms)) both;
+  }
+  @keyframes bloom{
+    0%{transform:rotate(var(--angle,0deg)) scale(.12);opacity:0}
+    70%{transform:rotate(var(--angle,0deg)) scale(1.06);opacity:1}
+    100%{transform:rotate(var(--angle,0deg)) scale(1);opacity:1}
+  }
+
+  .flower__center{
+    position:absolute;left:50%;top:50%;width:42%;height:42%;
+    margin-left:-21%;margin-top:-21%;border-radius:50%;
+    background:radial-gradient(circle at 32% 30%, #9c6b3c 0%, #6f4a27 45%, #4a2f14 80%, #3a250e 100%);
+    box-shadow:inset 0 -16% 24% rgba(0,0,0,.3), 0 1.2vmin 3.4vmin rgba(50,30,8,.3);
+  }
+  body.play .flower__center{
+    animation:centerIn .6s cubic-bezier(.2,.9,.3,1.5) 3150ms both;
+  }
+  @keyframes centerIn{
+    0%{transform:scale(.18) rotate(18deg);opacity:0}
+    55%{transform:scale(1.18) rotate(-4deg);opacity:1}
+    100%{transform:scale(1) rotate(0);opacity:1}
+  }
+  .flower__center::before{ /* semillas */
+    content:"";position:absolute;inset:0;border-radius:50%;
+    background-image:radial-gradient(circle, #2f1e0d 0 1.6px, rgba(47,30,13,0) 1.9px);
+    background-size:4.6vmin 4.1vmin;
+    background-position:center;
+    opacity:.5;
+  }
+  .flower__center::after{ /* brillo superior */
+    content:"";position:absolute;inset:6%;
+    border-radius:50%;
+    background:radial-gradient(circle at 35% 30%, rgba(255,243,176,.55), rgba(255,243,176,0) 55%);
+  }
+
+  .flower__stem{
+    position:absolute;left:50%;top:41vmin;
+    width:4vmin;margin-left:-2vmin;height:42vmin;
+    border-radius:2vmin;
+    background:linear-gradient(90deg,#218a45 0%, #3eb460 45%, #2b9e52 100%);
+    box-shadow:inset 0 -10% 12% rgba(0,0,0,.12);
+    transform-origin:50% 0%;
+  }
+  body.play .flower__stem{animation:grow 1.15s ease-out 100ms both}
+  @keyframes grow{from{transform:scaleY(0)}to{transform:scaleY(1)}}
+
+  .flower__leaf{
+    position:absolute;left:50%;top:30%;
+    width:15vmin;height:8.4vmin;
+    background:linear-gradient(135deg,#2b9e52,#1f7f3f);
+    box-shadow:inset 0 -6px 10px rgba(0,0,0,.12);
+  }
+  .flower__leaf--left{
+    margin-left:-17vmin;
+    border-radius:0 100% 0 100%;
+  }
+  .flower__leaf--right{
+    top:44%;margin-left:2vmin;
+    border-radius:100% 0 100% 0;
+  }
+  body.play .flower__leaf{animation:leafIn .55s cubic-bezier(.2,.9,.3,1.4) 600ms both}
+  @keyframes leafIn{from{transform:scale(0) rotate(-14deg);opacity:0}to{transform:scale(1) rotate(var(--rot,0deg));opacity:1}}
+  .flower__leaf--left{--rot:-24deg}
+  .flower__leaf--right{--rot:24deg}
+
+  .flower__sparkles{position:absolute;inset:0}
+  .sparkle{
+    position:absolute;left:50%;top:50%;
+    width:2vmin;height:2vmin;border-radius:50%;
+    box-shadow:0 0 1.2vmin rgba(255,214,102,.9);
+    animation:spark .95s ease-out forwards;
+  }
+  @keyframes spark{
+    0%{transform:translate(0,0) scale(1);opacity:1}
+    100%{transform:translate(var(--x),var(--y)) scale(0);opacity:0}
+  }
+
+  /* ---------- botones ---------- */
+  .actions{display:flex;flex-wrap:wrap;gap:.8rem;justify-content:center;margin-top:1.4rem}
+  .btn{
+    font:inherit;font-weight:700;font-size:1rem;
+    border:none;border-radius:999px;cursor:pointer;
+    padding:.85rem 1.9rem;
+    box-shadow:0 8px 18px rgba(31,61,43,.22);
+    transition:transform .18s ease, box-shadow .18s ease, background-color .18s ease, opacity .18s ease;
+  }
+  .btn:disabled{opacity:.45;cursor:wait;transform:none}
+  .btn:not(:disabled):hover{transform:translateY(-2px) scale(1.03)}
+  .btn:not(:disabled):active{transform:translateY(0) scale(.98)}
+  .btn:focus-visible{outline:3px solid var(--naranja);outline-offset:3px}
+  .btn--primary{background:linear-gradient(180deg,#35ac59,#2d9a4e);color:#fff}
+  .btn--primary:not(:disabled):hover{background-color:#27904a;box-shadow:0 12px 24px rgba(31,61,43,.28)}
+  .btn--ghost{background:rgba(255,255,255,.6);color:var(--verde);border:2px solid var(--verde);box-shadow:none;backdrop-filter:blur(4px)}
+  .btn--ghost:hover{background:#fff}
+
+  /* ---------- tarjeta mensaje ---------- */
+  .toast{
+    display:none;
+    max-width:min(94vw, 38rem);
+    margin:1.8rem auto 0;
+    background:rgba(255,255,255,.92);
+    border:1px solid rgba(229,166,20,.4);
+    border-left:6px solid var(--amarillo);
+    border-radius:var(--radius);
+    padding:1.4rem 1.6rem 1.2rem;
+    box-shadow:0 18px 40px rgba(31,61,43,.22);
+    backdrop-filter:blur(6px);
+    text-align:center;
+  }
+  .toast.show{display:block;animation:toastIn .55s cubic-bezier(.2,.9,.3,1.15) both}
+  @keyframes toastIn{from{opacity:0;transform:translateY(14px) scale(.97)}to{opacity:1;transform:none}}
+  .toast__title{font-family:var(--fuente-titulo);font-size:1.25rem;color:var(--verde);margin-bottom:.6rem}
+  .toast__msg{font-size:1.05rem;line-height:1.65;color:var(--verde-osc)}
+  .toast__msg strong{color:var(--naranja)}
+  .toast__sign{
+    margin-top:1rem;padding-top:.9rem;border-top:1px dashed rgba(45,154,78,.35);
+    font-style:italic;color:var(--verde-med);font-size:.98rem;
+  }
+
+  .footer{margin-top:auto;padding-top:2.4rem;font-size:.8rem;color:#5b7a66;letter-spacing:.04em}
+
+  /* ---------- pétalos cayendo ---------- */
+  .petals{position:fixed;inset:0;overflow:hidden;z-index:1}
+  .fall{
+    position:absolute;top:-8vh;left:var(--left);
+    width:var(--size);height:calc(var(--size)*1.55);
+    border-radius:60% 40% 60% 40%;
+    background:linear-gradient(135deg, rgba(255,224,130,.9), rgba(242,165,22,.78));
+    box-shadow:0 0 6px rgba(255,214,102,.5);
+    animation:fall var(--dur) linear var(--delay) infinite;
+  }
+  @keyframes fall{
+    0%{transform:translate3d(0,-10vh,0) rotate(0deg)}
+    100%{transform:translate3d(var(--sway),114vh,0) rotate(var(--rot))}
+  }
+
+  /* ---------- accesibilidad: reducir movimiento ---------- */
+  @media (prefers-reduced-motion: reduce){
+    .scene,.title,.toast{animation:none}
+    .flower__glow,.flower__petal,.flower__center,.flower__stem,.flower__leaf,.sparkle,.fall{animation:none !important}
+    .petals{display:none}
+    .flower__petal,.flower__center,.flower__stem,.flower__leaf{opacity:1;transform:none}
+  }
+
+  /* ---------- pantallas bajas ------------- */
+  @media (max-height:760px){
+    .flower{width:60vmin;height:72vmin}
+    .flower__head{width:60vmin;height:60vmin}
+    .flower__stem{top:30vmin;height:30vmin}
+    .flower__glow{top:30vmin}
+    .title{margin-top:.6rem}
+  }
+  @media (max-width:380px){
+    .toast__msg{font-size:.98rem}
+  }
+</style>
+</head>
+<body>
+  <div class="petals" id="petals" aria-hidden="true"></div>
+
+  <main class="scene">
+    <p class="eyebrow">21 de septiembre · Bolivia 🇧🇴</p>
+    <h1 class="title">¡Feliz Día del <em>Estudiante</em> y de la <em>Amistad</em>!</h1>
+    <p class="subtitle">Mira cómo se arma tu girasol de la amistad…</p>
+
+    <div class="flower" role="img" aria-label="Un girasol amarillo que se arma pétalo a pétalo">
+      <div class="flower__glow" aria-hidden="true"></div>
+      <div class="flower__head" id="head"></div>
+      <div class="flower__stem" aria-hidden="true">
+        <div class="flower__leaf flower__leaf--left" aria-hidden="true"></div>
+        <div class="flower__leaf flower__leaf--right" aria-hidden="true"></div>
+      </div>
+      <div class="flower__sparkles" id="sparkles" aria-hidden="true"></div>
+    </div>
+
+    <p class="hint" id="hint">Esta flor se está armando para ustedes…</p>
+
+    <div class="actions">
+      <button class="btn btn--primary" id="showMsg" disabled>Ver mensaje 💛</button>
+      <button class="btn btn--ghost" id="replay">Repetir la flor</button>
+    </div>
+
+    <section class="toast" id="toast" aria-live="polite">
+      <h2 class="toast__title">Para mis compañeras 🌻</h2>
+      <p class="toast__msg">
+        Hoy celebramos el Día del Estudiante y de la Amistad y quise regalarles esta flor amarilla para
+        decirles que son compañeras <strong>increíbles</strong>. Gracias por las risas, por los buenos
+        momentos y por hacer que nuestro curso se sienta como una gran casa.
+        <br><span style="display:inline-block">¡Que su día sea tan brillante como un girasol! 💛</span>
+      </p>
+      <p class="toast__sign">Con cariño, de parte de: <strong>Antonio Avila</strong></p>
+    </section>
+
+    <p class="footer">Día del Estudiante y de la Amistad · 21 de septiembre</p>
+  </main>
+
+<script>
+(function(){
+  var body = document.body;
+  var reduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  var PETALS = 20;
+
+  /* crear pétalos en espiral */
+  var head = document.getElementById('head');
+  for (var i = 0; i < PETALS; i++) {
+    var p = document.createElement('div');
+    p.className = 'flower__petal';
+    p.style.setProperty('--angle', ((360 / PETALS) * i) + 'deg');
+    p.style.setProperty('--d', (i * 70) + 'ms');
+    head.appendChild(p);
+  }
+
+  /* pétalos cayendo */
+  var falls = document.getElementById('petals');
+  for (var k = 0; k < 26; k++) {
+    var f = document.createElement('span');
+    f.className = 'fall';
+    f.style.setProperty('--left', (Math.random() * 100).toFixed(1) + 'vw');
+    f.style.setProperty('--size', (1.4 + Math.random() * 1.8).toFixed(2) + 'vmin');
+    f.style.setProperty('--dur', (7 + Math.random() * 7).toFixed(1) + 's');
+    f.style.setProperty('--delay', (-Math.random() * 14).toFixed(1) + 's');
+    f.style.setProperty('--sway', ((Math.random() * 40) - 20).toFixed(0) + 'vw');
+    f.style.setProperty('--rot', (Math.random() > .5 ? 1 : -1) * (250 + Math.random() * 380) + 'deg');
+    falls.appendChild(f);
+  }
+
+  var showMsg = document.getElementById('showMsg');
+  var replay = document.getElementById('replay');
+  var toast = document.getElementById('toast');
+  var hint = document.getElementById('hint');
+  var sparkles = document.getElementById('sparkles');
+  var sparksDone = false;
+
+  function burst() {
+    if (sparksDone) return;
+    sparksDone = true;
+    var count = Math.max(18, Math.min(34, Math.floor(window.innerWidth / 40)));
+    var colors = ['#ffd166', '#fff3b0', '#37b05d', '#ffb703', '#ffffff'];
+    for (var i = 0; i < count; i++) {
+      var sp = document.createElement('span');
+      sp.className = 'sparkle';
+      var a = Math.random() * Math.PI * 2;
+      var r = 40 + Math.random() * 32;
+      sp.style.setProperty('--x', (Math.cos(a) * r).toFixed(1) + 'vmin');
+      sp.style.setProperty('--y', (Math.sin(a) * r).toFixed(1) + 'vmin');
+      sp.style.background = colors[(Math.random() * colors.length) | 0];
+      sp.style.animationDelay = (Math.random() * 0.25).toFixed(2) + 's';
+      sparkles.appendChild(sp);
+      (function(el){ setTimeout(function(){ el.remove(); }, 2000); })(sp);
+    }
+  }
+
+  var DONE_AT = 3800; /* ms hasta que la flor termina */
+
+  function finish() {
+    showMsg.disabled = false;
+    hint.textContent = '¡Tu girasol está listo! Toca el botón para ver el mensaje. 💛';
+    burst();
+  }
+
+  function restart() {
+    body.classList.remove('play');
+    void body.offsetWidth; /* forzar reflow para reiniciar animaciones */
+    body.classList.add('play');
+    sparkles.innerHTML = '';
+    sparksDone = false;
+    toast.classList.remove('show');
+    showMsg.disabled = true;
+    hint.textContent = 'Esta flor se está armando para ustedes…';
+
+    if (!reduced) window.clearTimeout(restart._t);
+    finish._i = 0;
+    if (!reduced) {
+      restart._t = window.setTimeout(finish, DONE_AT);
+    }
+  }
+
+  window.addEventListener('load', function() {
+    body.classList.add('ready');
+    body.classList.add('play');
+
+    if (reduced) {
+      sparkles.style.display = 'none';
+      showMsg.disabled = false;
+      hint.textContent = '¡Tu girasol está listo! Toca el botón para ver el mensaje. 💛';
+      toast.classList.add('show');
+      return;
+    }
+    restart._t = window.setTimeout(finish, DONE_AT);
+  });
+
+  showMsg.addEventListener('click', function() {
+    if (showMsg.disabled) return;
+    toast.classList.toggle('show');
+    showMsg.textContent = toast.classList.contains('show') ? 'Ocultar mensaje' : 'Ver mensaje 💛';
+    toast.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+  });
+
+  replay.addEventListener('click', restart);
+})();
+</script>
+</body>
+</html>
